@@ -12,11 +12,30 @@ public class Items implements Serializable{
 	private Integer quantity;
 	
 	
+	public Items() {
+	}
+	
 	public Items(Product product, Integer quantity) {
 		super();
 		this.product = product;
 		this.price = product.getPrice();
 		this.quantity = quantity;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public Integer getQuantity() {
@@ -34,6 +53,11 @@ public class Items implements Serializable{
 		price = product.getPrice();
 		
 		return price * quantity;
+	}
+
+	@Override
+	public String toString() {
+		return "\nItems [product:" + product + ", price= " + price + ", quantity= " + quantity + "]";
 	}
 	
 }

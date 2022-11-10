@@ -1,9 +1,9 @@
 package br.com.modabit.view;
 
-public class Communication {
+public class CommunicationUserView {
 
 
-	public Communication() {
+	public CommunicationUserView() {
 		@SuppressWarnings("unused")
 		MenuView startMenu = new MenuView();
 	}

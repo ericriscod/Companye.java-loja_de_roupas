@@ -8,7 +8,7 @@ import br.com.modabit.model.enums.Category;
 import br.com.modabit.model.enums.Color;
 import br.com.modabit.model.enums.Department;
 import br.com.modabit.model.enums.Size;
-import br.com.modabit.model.enums.Type;
+import br.com.modabit.model.enums.TypeName;
 
 public class RegisterProductView {
 	
@@ -24,7 +24,7 @@ public class RegisterProductView {
 		System.out.println("\n\n                      REGISTER PRODUCT");
 		System.out.println("\n Type availability (CLASSIC, NO-CLASSIC).");
 		System.out.print(" Product type: ");
-		Type type = Type.valueOf(sc.next());
+		TypeName type = TypeName.valueOf(sc.next());
 
 		System.out.println("\n Size availability (P, M, G, GG).");
 		System.out.print(" Product size: ");

@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Type {
+public enum TypeName {
 	CLASSIC,
 	NO_CLASSIC
 }

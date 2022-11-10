@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.util.Locale;
 
 import br.com.modabit.db.DbConnection;
-import br.com.modabit.view.Communication;
+import br.com.modabit.model.dao.DaoFactory;
+import br.com.modabit.model.dao.StockDao;
+import br.com.modabit.model.dao.Impl.StockDaoJDBC;
+import br.com.modabit.view.CommunicationUserView;
 
 public class application {
 
@@ -12,9 +15,20 @@ public class application {
 		
 		Locale.setDefault(Locale.US);
 		
+		//Iniciando conexão com MySQL.
 		Connection conn = DbConnection.getConnection();	
-		Communication communication = new Communication();
+		
+		StockDao stock = DaoFactory.createStockDao();
+		
+		System.out.println(stock.findAll() );
+		
+		//Instânciando "Communication" para interação com o usuário
+		CommunicationUserView communication = new CommunicationUserView();
+		
+		//Fechando conexão com o banco de dados.
 		DbConnection.closeConnection();
 	}
+	
+	
 
 }

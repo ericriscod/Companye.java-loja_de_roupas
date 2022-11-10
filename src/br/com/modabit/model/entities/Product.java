@@ -6,10 +6,10 @@ import br.com.modabit.model.enums.Category;
 import br.com.modabit.model.enums.Color;
 import br.com.modabit.model.enums.Department;
 import br.com.modabit.model.enums.Size;
-import br.com.modabit.model.enums.Type;
+import br.com.modabit.model.enums.TypeName;
 
 public class Product {
-	private Type type;
+	private TypeName type;
 	private Size size;
 	private Color color;
 	private Category category;
@@ -20,7 +20,7 @@ public class Product {
 		super();
 	}
 
-	public Product(Type type, Size size, Color color, Category category, Department department, Double price) {
+	public Product(TypeName type, Size size, Color color, Category category, Department department, Double price) {
 		super();
 		this.type = type;
 		this.size = size;
@@ -30,44 +30,44 @@ public class Product {
 		this.price = price;
 	}
 
-	public Type getType() {
+	public TypeName getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setType(String type) {
+		this.type =  TypeName.valueOf(type);
 	}
 
 	public Size getSize() {
 		return size;
 	}
 
-	public void setSize(Size size) {
-		this.size = size;
+	public void setSize(String size) {
+		this.size = Size.valueOf(size);
 	}
 
 	public Color getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
-		this.color = color;
+	public void setColor(String color) {
+		this.color = Color.valueOf(color);
 	}
 
 	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategory(String category) {
+		this.category = Category.valueOf(category);
 	}
 
 	public Department getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department department) {
-		this.department = department;
+	public void setDepartment(String department) {
+		this.department = Department.valueOf(department);
 	}
 
 	public Double getPrice() {
@@ -98,8 +98,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [type=" + type + ", size=" + size + ", color=" + color + ", category=" + category
-				+ ", department=" + department + ", price=" + price + "]";
+		return " type= " + type + ", size= " + size + ", color= " + color + ", category= " + category
+				+ ", department= " + department;
 	}
 
 
