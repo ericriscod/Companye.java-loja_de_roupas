@@ -15,13 +15,12 @@ public class Product {
 	private Category category;
 	private Department department;
 	private Double price;
-	private Integer quantity;
 
 	public Product() {
 		super();
 	}
 
-	public Product(Type type, Size size, Color color, Category category, Department department, Double price, Integer quantity) {
+	public Product(Type type, Size size, Color color, Category category, Department department, Double price) {
 		super();
 		this.type = type;
 		this.size = size;
@@ -29,7 +28,6 @@ public class Product {
 		this.category = category;
 		this.department = department;
 		this.price = price;
-		this.quantity = quantity;
 	}
 
 	public Type getType() {
@@ -80,23 +78,9 @@ public class Product {
 		this.price = price;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setIncreaseQuantity(Integer quantity) {
-		this.quantity += quantity;
-	}
-	
-	public void setDecrementQuantity(Integer quantity) {
-		this.quantity -= quantity;
-	}
-
-	
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(category, color, department, price, quantity, size, type);
+		return Objects.hash(category, color, department, price, size, type);
 	}
 
 	@Override
@@ -109,14 +93,18 @@ public class Product {
 			return false;
 		Product other = (Product) obj;
 		return category == other.category && color == other.color && department == other.department
-				&& Objects.equals(price, other.price) && Objects.equals(quantity, other.quantity) && size == other.size
-				&& type == other.type;
+				&& Objects.equals(price, other.price) && size == other.size && type == other.type;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [type= " + type + ", size= " + size + ", color= " + color + ", category= " + category
-				+ ", department= " + department + ".\nPrice= " + price + ", quantity= " + quantity + "]";
+		return "Product [type=" + type + ", size=" + size + ", color=" + color + ", category=" + category
+				+ ", department=" + department + ", price=" + price + "]";
 	}
+
+
+	
+	
+	
 
 }

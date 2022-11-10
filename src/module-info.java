@@ -6,4 +6,5 @@
  *
  */
 module Modabit_Store {
+	requires java.sql;
 }

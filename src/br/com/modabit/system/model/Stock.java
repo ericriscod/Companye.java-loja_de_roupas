@@ -15,7 +15,7 @@ public class Stock {
 		return list;
 	}
 
-	public boolean increaseProduct(Product product) {
+	/*public boolean increaseProduct(Product product) {
 		for (Product increase : list) {
 			if (increase.equals(product)) {
 				increase.setIncreaseQuantity(product.getQuantity());
@@ -36,6 +36,6 @@ public class Stock {
 				}
 			}
 		}
-	}
+	}*/
 
 }
