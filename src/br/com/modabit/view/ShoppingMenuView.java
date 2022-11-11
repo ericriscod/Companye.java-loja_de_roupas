@@ -7,13 +7,13 @@ import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.ShoppingCart;
 import br.com.modabit.model.service.ShoppingService;
 
-public class ShoppingCartView {
+public class ShoppingMenuView {
 	
     private ShoppingCart shopping = null;
     private List<Items> shop = null;
 	private Scanner sc = null;
 
-	public ShoppingCartView() {
+	public ShoppingMenuView() {
 		sc = new Scanner(System.in);
 		shopping = new ShoppingCart();
 		shop = shopping.getlist();
@@ -53,7 +53,7 @@ public class ShoppingCartView {
 			break;
 		}
 		case 4:{
-			new MenuView();
+			new MenuView().startMenu();
 			break;
 		}
 		default:
@@ -86,9 +86,14 @@ public class ShoppingCartView {
 
 	private void listCart() {
 		System.out.println();
-		for(Items item : shop) {
-			System.out.println(item.toString());
+		if(shop.size() > 0) {
+			for(Items item : shop) {
+				System.out.println(item.toString());
+			}
+		}else {
+			System.out.println("\n Cart is empty!");
 		}
+		
 		System.out.print("\n\n Enter with 0 to continue: ");
 		sc.next();
 	}
