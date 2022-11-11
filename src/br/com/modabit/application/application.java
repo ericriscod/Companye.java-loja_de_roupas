@@ -18,10 +18,6 @@ public class application {
 		//Iniciando conexão com MySQL.
 		Connection conn = DbConnection.getConnection();	
 		
-		StockDao stock = DaoFactory.createStockDao();
-		
-		System.out.println(stock.findAll() );
-		
 		//Instânciando "Communication" para interação com o usuário
 		CommunicationUserView communication = new CommunicationUserView();
 		

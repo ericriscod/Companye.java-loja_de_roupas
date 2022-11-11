@@ -13,6 +13,9 @@ public class SelectionView {
 			register.closeScanner();
 			break;
 		}
+		case 2:{
+			break;
+		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + select);
 		}

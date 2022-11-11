@@ -7,8 +7,8 @@ import br.com.modabit.model.entities.Stock;
 
 public interface StockDao {
 		
-	void insert(Stock stock);
-	void update(Stock stock);
+	void insert(Items items);
+	void update(Items stock);
 	void deleteById(Integer id);
 	List <Items> findAll();
 }

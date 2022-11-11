@@ -1,12 +1,14 @@
 package br.com.modabit.model.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Items implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
 	
+	private Integer id;
 	private Product product;
 	private Double price;
 	private Integer quantity;
@@ -15,11 +17,22 @@ public class Items implements Serializable{
 	public Items() {
 	}
 	
-	public Items(Product product, Integer quantity) {
+	public Items(Integer id,Product product, Integer quantity) {
 		super();
+		this.id = id;
 		this.product = product;
 		this.price = product.getPrice();
 		this.quantity = quantity;
+	}
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Product getProduct() {
@@ -53,6 +66,23 @@ public class Items implements Serializable{
 		price = product.getPrice();
 		
 		return price * quantity;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Items other = (Items) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override

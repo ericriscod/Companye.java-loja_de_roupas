@@ -9,13 +9,16 @@ import br.com.modabit.model.enums.Color;
 import br.com.modabit.model.enums.Department;
 import br.com.modabit.model.enums.Size;
 import br.com.modabit.model.enums.TypeName;
+import br.com.modabit.model.service.StockService;
 
 public class RegisterProductView {
 	
 	private Scanner sc;
+	private StockService stockService;
 	
 	public RegisterProductView() {
 		sc = new Scanner(System.in);
+		stockService = new StockService();
 		registerProduct();
 	}
 	
@@ -47,15 +50,23 @@ public class RegisterProductView {
 
 		System.out.print("\n Product quantity: ");
 		Integer quantity = sc.nextInt();
+		
+		System.out.print("\n Product quantity: ");
+		Integer id = sc.nextInt();
 
 		Product product = new Product(type, size, color, category, department, price);
 		
-		Items items = new Items(product, quantity);
-
+		Items items = new Items(id, product, quantity);		
+		
+		//Adicionar ao estoque.
+		System.out.println(stockService.insertInStock(items));
+	
 	}
 	
 	public void closeScanner() {
-		sc.close();
+		if(sc !=null) {
+			sc.close();
+		}
 	}
 
 }
