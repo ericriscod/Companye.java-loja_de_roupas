@@ -5,14 +5,16 @@ import java.util.List;
 import br.com.modabit.model.dao.DaoFactory;
 import br.com.modabit.model.dao.StockDao;
 import br.com.modabit.model.entities.Items;
+import br.com.modabit.model.entities.Stock;
 
 public class StockService {
+	
+	StockDao data = DaoFactory.createStockDao();
 
 	public String insertInStock(Items items) {
 		boolean isNew;
 		List<Items> list;
-
-		StockDao data = DaoFactory.createStockDao();
+		
 		list = data.findAll();
 		isNew = true;
 
@@ -20,15 +22,18 @@ public class StockService {
 			if (item.equals(items)) {
 				items.setQuantity(items.getQuantity() + item.getQuantity());
 				data.update(items);
-				isNew = false;
-				return "\n successfully updated!";
+				return "\n Successfully updated!";
 			}
 		}
 		if (isNew) {
 			data.insert(items);
-			return "\n successfully inserted!";
+			return "\n Successfully inserted!";
 		}
 
-		return "\n insertion failure";
+		return "\n Insertion failure";
+	}
+	
+	public List<Items> stockList (){
+		 return data.findAll();
 	}
 }

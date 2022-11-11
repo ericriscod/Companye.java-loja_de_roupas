@@ -77,7 +77,7 @@ public class Items implements Serializable{
 
 	@Override
 	public String toString() {
-		return "\nItems [product:" + product + ", price= " + price + ", quantity= " + quantity + "]";
+		return "Items [productId("+product.getId()+")" + product + ", price= " + price + ", quantity= " + quantity + "]";
 	}
 	
 }

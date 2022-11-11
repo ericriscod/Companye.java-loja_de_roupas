@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class MenuView {
 
-	private Scanner sc = new Scanner(System.in);
+	private Scanner sc = null;
 
 	public MenuView() {
-		startMenu();
+		sc = new Scanner(System.in);
 	}
 
-	private void startMenu() {
+	public Integer startMenu() {
 		System.out.println("\n----------------> Welcome to the MODABIT_STORE <----------------");
 		System.out.println("\n                       Select an option:");
 		System.out.println("\n                | 1-- Register product.        |");
@@ -19,9 +19,33 @@ public class MenuView {
 		System.out.println("                | 4-- Check cart.              |");
 		System.out.println("                | 5-- Payment.                 |");
 		System.out.println("                | 7-- Leave.                   |");
-		
+
 		System.out.print("\n                 Response: ");
 
-		new SelectionView(sc.nextInt());
+		return sc.nextInt();
+	}
+	
+	public void selection(Integer select) {
+		switch (select) {
+		case 1: {
+			RegisterProductView register = new RegisterProductView();
+			break;
+		}
+		case 2: {
+			new ListProductView();
+			break;
+		}
+		
+		case 3:{
+			new ShoppingCartView();
+		}
+
+		case 7: {
+			break;
+		}
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + select);
+		}
 	}
 }

@@ -1,23 +1,30 @@
 package br.com.modabit.model.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-	private List<Items> produtcs;
+
+	private List<Items> list;
 	
-	public List<Items> getProdutcs() {
-		return produtcs;
+	
+	public ShoppingCart() {
+		list = new ArrayList<>();
+	}
+	
+	public List<Items> getlist() {
+		return list;
 	}
 
+	public void setlist(List<Items> produtc) {
+		this.list = produtc;
+	}
+	
 
-
-	public void setProdutcs(List<Items> produtcs) {
-		this.produtcs = produtcs;
+	@Override
+	public String toString() {
+		return "ShoppingCart [list=" + list + "]";
 	}
 
-
-
-	public Double total(List<Items> product) {
-		return 0d;
-	}
+	
 } 

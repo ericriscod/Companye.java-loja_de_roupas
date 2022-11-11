@@ -9,6 +9,6 @@ public interface StockDao {
 		
 	void insert(Items items);
 	void update(Items Items);
-	void deleteById(Integer id);
+	Items findById(Integer id);
 	List <Items> findAll();
 }
