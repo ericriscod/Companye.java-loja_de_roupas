@@ -18,13 +18,17 @@ public class StockService {
 
 		for (Items item : list) {
 			if (item.equals(items)) {
+				items.setQuantity(items.getQuantity() + item.getQuantity());
 				data.update(items);
+				isNew = false;
+				return "\n successfully updated!";
 			}
 		}
 		if (isNew) {
 			data.insert(items);
+			return "\n successfully inserted!";
 		}
 
-		return "";
+		return "\n insertion failure";
 	}
 }

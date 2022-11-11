@@ -9,6 +9,7 @@ import br.com.modabit.model.enums.Size;
 import br.com.modabit.model.enums.TypeName;
 
 public class Product {
+	private Integer id;
 	private TypeName type;
 	private Size size;
 	private Color color;
@@ -28,6 +29,16 @@ public class Product {
 		this.category = category;
 		this.department = department;
 		this.price = price;
+	}
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public TypeName getType() {
@@ -77,10 +88,10 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(category, color, department, price, size, type);
+		return Objects.hash(category, color, department, size, type);
 	}
 
 	@Override
@@ -93,7 +104,7 @@ public class Product {
 			return false;
 		Product other = (Product) obj;
 		return category == other.category && color == other.color && department == other.department
-				&& Objects.equals(price, other.price) && size == other.size && type == other.type;
+				&& size == other.size && type == other.type;
 	}
 
 	@Override

@@ -71,10 +71,15 @@ public class StockDaoJDBC implements StockDao{
 		try {
 			
 			conn.setAutoCommit(false);
-			st = conn.prepareStatement("UPDATE tbl_stock SET Price = ?, Quantity = ?");
+			st = conn.prepareStatement("UPDATE tbl_stock SET Price = ?, Quantity = ? WHERE  TypeName = ? AND Size = ? AND Color = ? AND Category = ? AND Department = ? " );
 
 			st.setDouble(1, items.getPrice());
 			st.setInt(2, items.getQuantity());
+			st.setString(3, items.getProduct().getType().toString());
+			st.setString(4, items.getProduct().getSize().toString());
+			st.setString(5, items.getProduct().getColor().toString());
+			st.setString(6, items.getProduct().getCategory().toString());
+			st.setString(7, items.getProduct().getDepartment().toString());
 			
 			int rowsAffeted = st.executeUpdate();
 			
@@ -91,6 +96,9 @@ public class StockDaoJDBC implements StockDao{
 				throw new DbException(e1.getMessage());
 			}
 			throw new DbException(e.getMessage());
+		}
+		finally {
+			DbConnection.closeStatement(st);
 		}
 	}
 
@@ -124,8 +132,8 @@ public class StockDaoJDBC implements StockDao{
 				prod.setCategory(rs.getString("Category"));
 				prod.setDepartment(rs.getString("Department"));
 				prod.setPrice(rs.getDouble("Price"));
+				prod.setId(rs.getInt("Id"));
 				items.setProduct(prod);
-				items.setId(rs.getInt("Id"));
 				items.setPrice(prod.getPrice());
 				items.setQuantity(rs.getInt("Quantity"));
 				list.add(items);

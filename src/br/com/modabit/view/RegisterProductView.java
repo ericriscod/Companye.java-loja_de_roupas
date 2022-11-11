@@ -50,13 +50,10 @@ public class RegisterProductView {
 
 		System.out.print("\n Product quantity: ");
 		Integer quantity = sc.nextInt();
-		
-		System.out.print("\n Product quantity: ");
-		Integer id = sc.nextInt();
 
 		Product product = new Product(type, size, color, category, department, price);
 		
-		Items items = new Items(id, product, quantity);		
+		Items items = new Items(product, quantity);		
 		
 		//Adicionar ao estoque.
 		System.out.println(stockService.insertInStock(items));
