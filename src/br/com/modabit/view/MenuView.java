@@ -16,11 +16,11 @@ import br.com.modabit.model.service.StockService;
 public class MenuView {
 
 	private Scanner sc = null;
-	private StockService stock = null;
+	private StockService stockService = null;
 	private List<Items> list = null;
 
 	public MenuView() {
-		stock = new StockService();
+		stockService = new StockService();
 		sc = new Scanner(System.in);
 	}
 
@@ -29,12 +29,11 @@ public class MenuView {
 		while (option != 7) {
 			System.out.println("\n\n----------------> Welcome to the MODABIT_STORE <----------------");
 			System.out.println("\n                       Select an option:");
-			System.out.println("\n                | 1-- Register product.        |");
-			System.out.println("                | 2-- List of products(stock). |");
-			System.out.println("                | 3-- Shopping.                |");
-			System.out.println("                | 4-- Check cart.              |");
-			System.out.println("                | 5-- Payment.                 |");
-			System.out.println("                | 7-- Leave.                   |");
+			System.out.println("\n                | 1-- Register product         |");
+			System.out.println("                | 2-- Stock list               |");
+			System.out.println("                | 3-- Shopping                 |");
+			System.out.println("                | 4-- Payment                  |");
+			System.out.println("                | 7-- Leave                    |");
 
 			System.out.print("\n                 Response: ");
 			option = sc.nextInt();
@@ -43,13 +42,13 @@ public class MenuView {
 			}
 
 		}
-		System.out.println("Thanck you!");
+		System.out.println("Thank you!");
 	}
 
 	private void registerProduct() {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                      REGISTER PRODUCT");
-		System.out.println("\n Type availability (CLASSIC, NO-CLASSIC).");
+		System.out.println("\n Type availability (CLASSIC, NO_CLASSIC).");
 		System.out.print(" Product type: ");
 		TypeName type = TypeName.valueOf(sc.next());
 
@@ -80,10 +79,9 @@ public class MenuView {
 		Items items = new Items(product, quantity);
 
 		// Adicionar ao estoque.
-		System.out.println(stock.insertInStock(items));
+		System.out.println(stockService.insertInStock(items));
 		System.out.print("\n\n Enter with 0 to continue: ");
 		sc.next();
-
 	}
 
 	private void listProduct() {
@@ -92,12 +90,12 @@ public class MenuView {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                   LIST OF PRODUCTS - STOCK" + "\n\n");
 
-		list.addAll(stock.stockList());
+		list.addAll(stockService.stockList());
 		if (list.size() > 0) {
 			for (Items prod : list) {
 				System.out.println(prod);
 			}
-		}else {
+		} else {
 			System.out.println("\n Cart is empty!");
 		}
 
@@ -118,6 +116,10 @@ public class MenuView {
 
 		case 3: {
 			new ShoppingMenuView();
+		}
+
+		case 7: {
+			break;
 		}
 
 		default:

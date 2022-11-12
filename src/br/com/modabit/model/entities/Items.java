@@ -31,10 +31,6 @@ public class Items implements Serializable{
 		this.product = product;
 	}
 
-	public Double getPrice() {
-		return price;
-	}
-
 	public void setPrice(Double price) {
 		this.price = price;
 	}
@@ -51,11 +47,10 @@ public class Items implements Serializable{
 
 	public Double subTotal() {
 		
-		price = product.getPrice();
+		Double price = product.getPrice();
 		
 		return price * quantity;
 	}
-
 
 
 	@Override

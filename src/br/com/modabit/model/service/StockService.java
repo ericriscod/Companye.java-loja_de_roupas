@@ -8,20 +8,18 @@ import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.Stock;
 
 public class StockService {
-	
-	StockDao data = DaoFactory.createStockDao();
+
+	private StockDao data = DaoFactory.createStockDao();
 
 	public String insertInStock(Items items) {
-		boolean isNew;
-		List<Items> list;
+		boolean isNew = true;
+		List<Items> list = data.findAll();
 		
-		list = data.findAll();
-		isNew = true;
-
 		for (Items item : list) {
 			if (item.equals(items)) {
 				items.setQuantity(items.getQuantity() + item.getQuantity());
 				data.update(items);
+				isNew = false;
 				return "\n Successfully updated!";
 			}
 		}
@@ -29,11 +27,10 @@ public class StockService {
 			data.insert(items);
 			return "\n Successfully inserted!";
 		}
-
 		return "\n Insertion failure";
 	}
-	
-	public List<Items> stockList (){
-		 return data.findAll();
+
+	public List<Items> stockList() {
+		return data.findAll();
 	}
 }

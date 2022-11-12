@@ -39,7 +39,7 @@ public class StockDaoJDBC implements StockDao {
 			st.setString(3, items.getProduct().getColor().toString());
 			st.setString(4, items.getProduct().getCategory().toString());
 			st.setString(5, items.getProduct().getDepartment().toString());
-			st.setDouble(6, items.getPrice());
+			st.setDouble(6, items.getProduct().getPrice());
 			st.setInt(7, items.getQuantity());
 
 			int rowsAffected = st.executeUpdate();
@@ -74,7 +74,7 @@ public class StockDaoJDBC implements StockDao {
 			st = conn.prepareStatement(
 					"UPDATE tbl_stock SET Price = ?, Quantity = ? WHERE  TypeName = ? AND Size = ? AND Color = ? AND Category = ? AND Department = ? ");
 
-			st.setDouble(1, items.getPrice());
+			st.setDouble(1, items.getProduct().getPrice());
 			st.setInt(2, items.getQuantity());
 			st.setString(3, items.getProduct().getType().toString());
 			st.setString(4, items.getProduct().getSize().toString());

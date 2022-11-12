@@ -12,12 +12,12 @@ public class ShoppingCart {
 		list = new ArrayList<>();
 	}
 	
-	public List<Items> getlist() {
+	public List<Items> getList() {
 		return list;
 	}
 
-	public void setlist(List<Items> produtc) {
-		this.list = produtc;
+	public void setList(List<Items> items) {
+		this.list = items;
 	}
 	
 
