@@ -1,5 +1,6 @@
 package br.com.modabit.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.modabit.model.dao.DaoFactory;
@@ -17,26 +18,29 @@ public class SaleService {
 
 		StockDao data = DaoFactory.createStockDao();
 		List<Items> listDataBase = data.findAll();
-		
-		Boolean isValidated = null; 
+		List<Items> listUpdate = new ArrayList<>();
 
-		for (int i=0; i<listCart.size(); i++) {
-			System.out.println("For1");
-			for (Items listData : listDataBase) {
-				System.out.println("For2");
-				if (listCart.get(i).equals(listData)) {
-					if (listCart.get(i).getQuantity() > listData.getQuantity()) {
-						isValidated = false;
-					} else {
-						Integer quantity = listData.getQuantity() - listCart.get(i).getQuantity();
+		for (int i = 0; i < listCart.size(); i++) {
+			for (int j = 0; j < listDataBase.size(); j++) {
+				
+				if (listCart.get(i).equals(listDataBase.get(j))) {
+					
+					if (listCart.get(i).getQuantity() < listDataBase.get(j).getQuantity() | (listCart.get(i).getQuantity() > 0 && listDataBase.get(j).getQuantity() > 0)) {
+						
+						Integer quantity = listDataBase.get(j).getQuantity() - listCart.get(i).getQuantity();
 						listCart.get(i).setQuantity(quantity);
-						data.update(listCart.get(i));
-						isValidated = true;
+						listUpdate.add(listCart.get(i));
 					}
 				}
 			}
 		}
-		return isValidated;
-	}
 
+		if (listUpdate.size() == listCart.size()) {
+			for(Items list: listUpdate) {
+				data.update(list);
+			}
+			return true;
+		}
+		return false;
+	}
 }
