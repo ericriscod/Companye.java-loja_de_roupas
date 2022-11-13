@@ -32,7 +32,6 @@ public class MenuView {
 			System.out.println("\n                | 1-- Register product         |");
 			System.out.println("                | 2-- Stock list               |");
 			System.out.println("                | 3-- Shopping                 |");
-			System.out.println("                | 4-- Payment                  |");
 			System.out.println("                | 7-- Leave                    |");
 
 			System.out.print("\n                 Response: ");
@@ -42,7 +41,7 @@ public class MenuView {
 			}
 
 		}
-		System.out.println("Thank you!");
+		System.out.println("Thank you!\n\n\n");
 	}
 
 	private void registerProduct() {
@@ -90,7 +89,7 @@ public class MenuView {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                   LIST OF PRODUCTS - STOCK" + "\n\n");
 
-		list.addAll(stockService.stockList());
+		list.addAll(stockService.getStockList());
 		if (list.size() > 0) {
 			for (Items prod : list) {
 				System.out.println(prod);
@@ -115,9 +114,9 @@ public class MenuView {
 		}
 
 		case 3: {
-			new ShoppingMenuView();
+			ShoppingView.ShoppingCartMenu();
 		}
-
+		
 		case 7: {
 			break;
 		}

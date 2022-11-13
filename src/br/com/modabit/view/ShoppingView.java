@@ -7,29 +7,23 @@ import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.ShoppingCart;
 import br.com.modabit.model.service.ShoppingService;
 
-public class ShoppingMenuView {
+public class ShoppingView {
 
-	private ShoppingService shoppingService = null;
-	private List<Items> shop = null;
-	private Scanner sc = null;
+	private static ShoppingService shoppingService = new ShoppingService();
+	private static List<Items> shop = shoppingService.getShoppingList();
+	private static Scanner sc = new Scanner(System.in);;
 
-	public ShoppingMenuView() {
-		sc = new Scanner(System.in);
-		shoppingService = new ShoppingService();
-		shop = shoppingService.shoppingList();
-		ShoppingCart();
-	}
-
-	private void ShoppingCart() {
+	public static void ShoppingCartMenu() {
 		Integer option = -1;
-		while (option != 4) {
+		while (option != 5) {
 			System.out.println("\n\n _______________________________________________________________");
 			System.out.println("\n\n                        Shopping Cart  \n");
 			System.out.println("                       Select an option:");
 			System.out.println("\n                | 1-- Insert into cart         |");
 			System.out.println("                | 2-- Remove from cart         |");
 			System.out.println("                | 3-- List cart                |");
-			System.out.println("                | 4-- Back                     |");
+			System.out.println("                | 4-- Payment                  |");
+			System.out.println("                | 5-- Back                     |");
 
 			System.out.print("\n                 Response: ");
 			option = sc.nextInt();
@@ -39,7 +33,7 @@ public class ShoppingMenuView {
 		System.out.println("\n Returning...\n\n");
 	}
 
-	private void selectShopping(Integer option) {
+	private static void selectShopping(Integer option) {
 		switch (option) {
 		case 1: {
 			insertIntoCart();
@@ -54,6 +48,10 @@ public class ShoppingMenuView {
 			break;
 		}
 		case 4: {
+			SaleView.validateSale();;
+			break;
+		}
+		case 5:{
 			break;
 		}
 		default:
@@ -61,14 +59,17 @@ public class ShoppingMenuView {
 		}
 	}
 
-	private void insertIntoCart() {
+	private static void insertIntoCart() {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                    Shopping Cart - Insert ");
 
 		System.out.print("\n Enter the product id: ");
 		Integer id = sc.nextInt();
+		
+		System.out.print(" Enter with amont: ");
+		Integer amont = sc.nextInt();
 
-		Integer add = shoppingService.addItem(id);
+		Integer add = shoppingService.addItem(id, amont);
 		
 		switch (add) {
 		case 1:
@@ -91,7 +92,7 @@ public class ShoppingMenuView {
 		sc.next();
 	}
 
-	private void removeFromCart() {
+	private static void removeFromCart() {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                    Shopping Cart - Remove ");
 		System.out.print("\n Enter the product id: ");
@@ -99,9 +100,9 @@ public class ShoppingMenuView {
 
 		Boolean isRemoved = false;
 
-		for (int i = 0; i < shoppingService.shoppingList().size(); i++) {
-			if (shoppingService.shoppingList().get(i).getProduct().getId() == id) {
-				shoppingService.shoppingList().remove(i);
+		for (int i = 0; i < shoppingService.getShoppingList().size(); i++) {
+			if (shoppingService.getShoppingList().get(i).getProduct().getId() == id) {
+				shoppingService.getShoppingList().remove(i);
 				System.out.println(" Success!");
 				isRemoved = true;
 				break;
@@ -115,19 +116,19 @@ public class ShoppingMenuView {
 		sc.next();
 	}
 
-	private void listCart() {
+	private static void listCart() {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                   Shopping Cart - ListItems \n");
 		
 		Double total = 0d;
 		
-		if (shop.size() > 0) {
-			for (Items item : shop) {
-				System.out.println(item.toString());
+		if (shoppingService.getShoppingList().size() > 0) {
+			for (Items item: shop) {
+				System.out.println(item);
 				total += item.subTotal();
 			}
 			
-			System.out.println("\nShopping cart total: R$" + String.format("%.2f", total));
+			System.out.println("\n Shopping cart total: R$" + String.format("%.2f", total));
 			
 		} else {
 			System.out.println("\n Cart is empty!");

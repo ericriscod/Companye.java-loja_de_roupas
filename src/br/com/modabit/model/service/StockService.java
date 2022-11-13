@@ -30,7 +30,7 @@ public class StockService {
 		return "\n Insertion failure";
 	}
 
-	public List<Items> stockList() {
+	public List<Items> getStockList() {
 		return data.findAll();
 	}
 }

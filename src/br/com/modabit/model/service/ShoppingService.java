@@ -7,13 +7,14 @@ import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.ShoppingCart;
 
 public class ShoppingService {
-	private ShoppingCart shop = new ShoppingCart();
+	private static ShoppingCart shop = new ShoppingCart();
 
 	// private List<Items> cart = null;
 
-	public Integer addItem(Integer id) {
+	public Integer addItem(Integer id, Integer amont) {
 
 		Items item = DaoFactory.createStockDao().findById(id);
+		item.setQuantity(amont);
 
 		if ((!shop.getList().contains(item)) && item != null) {
 			shop.getList().add(item);
@@ -31,7 +32,7 @@ public class ShoppingService {
 
 	}
 
-	public List<Items> shoppingList() {
+	public List<Items> getShoppingList() {
 		return shop.getList();
 	}
 
