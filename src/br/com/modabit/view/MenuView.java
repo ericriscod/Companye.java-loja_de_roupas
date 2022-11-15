@@ -1,71 +1,73 @@
 package br.com.modabit.view;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import br.com.modabit.model.entities.Items;
-import br.com.modabit.model.entities.Product;
 import br.com.modabit.model.enums.Category;
 import br.com.modabit.model.enums.Color;
 import br.com.modabit.model.enums.Department;
 import br.com.modabit.model.enums.Size;
 import br.com.modabit.model.enums.TypeName;
+import br.com.modabit.model.service.SaleService;
 import br.com.modabit.model.service.StockService;
 
 public class MenuView {
 
-	private Scanner sc = null;
-	private StockService stockService = null;
-	private List<Items> list = null;
-
-	public MenuView() {
-		stockService = new StockService();
-		sc = new Scanner(System.in);
-	}
+	private static Scanner sc = new Scanner(System.in);
+	private static StockService stockService = new StockService();
+	private static SaleService saleService = new SaleService();
+	private static List<Items> list = null;
 
 	public void startMenu() {
-		Integer option = -1;
-		while (option != 7) {
+		Integer option = 0;
+		
+		while (option != 5) {
 			System.out.println("\n\n----------------> Welcome to the MODABIT_STORE <----------------");
 			System.out.println("\n                       Select an option:");
 			System.out.println("\n                | 1-- Register product         |");
 			System.out.println("                | 2-- Stock list               |");
-			System.out.println("                | 3-- Shopping                 |");
-			System.out.println("                | 7-- Leave                    |");
+			System.out.println("                | 3-- Shopping Cart            |");
+			System.out.println("                | 4-- Sales historic           |");
+			System.out.println("                | 5-- Leave                    |");
 
 			System.out.print("\n                 Response: ");
 			option = sc.nextInt();
-			if (option != 7) {
-				selection(option);
-			}
+			selection(option);
 
 		}
 		System.out.println("Thank you!\n\n\n");
 	}
 
 	private void registerProduct() {
+		Integer resultInsert = 0;
+		
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                      REGISTER PRODUCT");
 		System.out.println("\n Type availability (CLASSIC, NO_CLASSIC).");
 		System.out.print(" Product type: ");
-		TypeName type = TypeName.valueOf(sc.next());
+		String typeString = sc.next();
+		TypeName type = TypeName.valueOf(typeString.toUpperCase());
 
 		System.out.println("\n Size availability (P, M, G, GG).");
 		System.out.print(" Product size: ");
-		Size size = Size.valueOf(sc.next());
+		String sizeString = sc.next();
+		Size size = Size.valueOf(sizeString.toUpperCase());
 
 		System.out.println("\n Color availability (WHITE, BLACK, GREY, BLUE, YELLOW, GREEN).");
 		System.out.print(" Product color: ");
-		Color color = Color.valueOf(sc.next());
+		String colorString = sc.next();
+		Color color = Color.valueOf(colorString.toUpperCase());
 
 		System.out.println("\n Category availability (SHIRTS, BLOUSE, PANTS, SHORTS).");
-		System.out.print(" Product color: ");
-		Category category = Category.valueOf(sc.next());
+		System.out.print(" Product category: ");
+		String categoryString = sc.next();
+		Category category = Category.valueOf(categoryString.toUpperCase());
 
 		System.out.println("\n Department availability (SPORT, BATH, SOCIAL, SLEEP, DAY_BY_DAY).");
-		System.out.print(" Product color: ");
-		Department department = Department.valueOf(sc.next());
+		System.out.print(" Product department: ");
+		String departmentString = sc.next();
+		Department department = Department.valueOf(departmentString.toUpperCase());
 
 		System.out.print("\n Product price: ");
 		Double price = sc.nextDouble();
@@ -73,27 +75,53 @@ public class MenuView {
 		System.out.print("\n Product quantity: ");
 		Integer quantity = sc.nextInt();
 
-		Product product = new Product(type, size, color, category, department, price);
+		resultInsert =  stockService.insertInStock(stockService.createItem(type, size, color, category, department, price, quantity));
+		
+		if(resultInsert == 1) {
+			System.out.println("\n Successfully updated!");
+		}else if(resultInsert == 2){
+			System.out.println("\n Successfully inserted!");
+		}else {
+			System.out.println("\n Insertion failure");
+		}
+		
+		System.out.print("\n\n Enter with 0 to continue: ");
+		sc.next();
+	}
+	
+	private void listSaleHistoric() {
+		Boolean isEmpty = true;
+		
+		System.out.println("\n\n _______________________________________________________________");
+		System.out.println("\n\n                       Menu - Historic \n");
+		
+		for(int i=0 ; i<saleService.getListHistoric().size(); i++) {
+			System.out.println(saleService.getListHistoric().get(i));
+			isEmpty = false;
+		}
 
-		Items items = new Items(product, quantity);
 
-		// Adicionar ao estoque.
-		System.out.println(stockService.insertInStock(items));
+		if(isEmpty) {
+			System.out.println("\n Historic is empty!");
+		}
+
+		System.out.println("\n\n _______________________________________________________________");
+
 		System.out.print("\n\n Enter with 0 to continue: ");
 		sc.next();
 	}
 
 	private void listProduct() {
-		list = new ArrayList<>();
-
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                   LIST OF PRODUCTS - STOCK" + "\n\n");
+		
+		list = stockService.getStockList();
 
-		list.addAll(stockService.getStockList());
 		if (list.size() > 0) {
 			for (Items prod : list) {
 				System.out.println(prod);
 			}
+
 		} else {
 			System.out.println("\n Cart is empty!");
 		}
@@ -114,10 +142,16 @@ public class MenuView {
 		}
 
 		case 3: {
-			ShoppingView.ShoppingCartMenu();
+			ShoppingCartView.ShoppingCartMenu();
+			break;
 		}
 		
-		case 7: {
+		case 4:{
+			listSaleHistoric();
+			break;
+		}
+
+		case 5: {
 			break;
 		}
 

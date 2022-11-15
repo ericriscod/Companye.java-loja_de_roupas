@@ -1,6 +1,5 @@
 package br.com.modabit.model.dao.Impl;
 
-import java.security.KeyRep.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,7 +127,6 @@ public class StockDaoJDBC implements StockDao {
 				prod.setPrice(rs.getDouble("Price"));
 				prod.setId(rs.getInt("Id"));
 				items.setProduct(prod);
-				items.setPrice(prod.getPrice());
 				items.setQuantity(rs.getInt("Quantity"));
 				list.add(items);
 			}
@@ -172,7 +170,6 @@ public class StockDaoJDBC implements StockDao {
 				prod.setPrice(rs.getDouble("Price"));
 				prod.setId(rs.getInt("Id"));
 				item.setProduct(prod);
-				item.setPrice(prod.getPrice());
 				item.setQuantity(rs.getInt("Quantity"));
 				return item;
 			} else {

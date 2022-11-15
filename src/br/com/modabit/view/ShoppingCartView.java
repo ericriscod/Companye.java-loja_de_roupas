@@ -1,16 +1,12 @@
 package br.com.modabit.view;
 
-import java.util.List;
 import java.util.Scanner;
 
-import br.com.modabit.model.entities.Items;
-import br.com.modabit.model.entities.ShoppingCart;
-import br.com.modabit.model.service.ShoppingService;
+import br.com.modabit.model.service.ShoppingCartService;
 
-public class ShoppingView {
+public class ShoppingCartView {
 
-	private static ShoppingService shoppingService = new ShoppingService();
-	private static List<Items> shop = shoppingService.getShoppingList();
+	private static ShoppingCartService shoppingService = new ShoppingCartService();
 	private static Scanner sc = new Scanner(System.in);;
 
 	public static void ShoppingCartMenu() {
@@ -29,7 +25,7 @@ public class ShoppingView {
 			option = sc.nextInt();
 			selectShopping(option);
 		}
-		
+
 		System.out.println("\n Returning...\n\n");
 	}
 
@@ -48,10 +44,10 @@ public class ShoppingView {
 			break;
 		}
 		case 4: {
-			SaleView.validateSale();;
+			new PaymentView().paymentMethod();
 			break;
 		}
-		case 5:{
+		case 5: {
 			break;
 		}
 		default:
@@ -65,22 +61,22 @@ public class ShoppingView {
 
 		System.out.print("\n Enter the product id: ");
 		Integer id = sc.nextInt();
-		
+
 		System.out.print(" Enter with amont: ");
 		Integer amont = sc.nextInt();
 
 		Integer add = shoppingService.addItem(id, amont);
-		
+
 		switch (add) {
 		case 1:
 			System.out.println(" Successfully inseted!");
 			break;
-		case 2:{
+		case 2: {
 			System.out.println("\n Successfully updated!");
 			break;
 		}
-		
-		case 3:{
+
+		case 3: {
 			System.out.println("\n Insertion failure!");
 			break;
 		}
@@ -98,41 +94,39 @@ public class ShoppingView {
 		System.out.print("\n Enter the product id: ");
 		Integer id = sc.nextInt();
 
-		Boolean isRemoved = false;
+		Boolean isRemoved = null;
 
-		for (int i = 0; i < shoppingService.getShoppingList().size(); i++) {
-			if (shoppingService.getShoppingList().get(i).getProduct().getId() == id) {
-				shoppingService.getShoppingList().remove(i);
-				System.out.println(" Success!");
-				isRemoved = true;
-				break;
-			}
-		}
-		if (isRemoved == false) {
+		isRemoved = shoppingService.removeItem(id);
+
+		if (isRemoved) {
+			System.out.println("\n Successfully removed!");
+		} else {
 			System.out.println("\n Removal failed!");
 		}
-
 		System.out.print("\n\n Enter with 0 to continue: ");
 		sc.next();
 	}
 
 	private static void listCart() {
+		Double total = 0d;
+		Boolean isEmpty = true;
+		
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                   Shopping Cart - ListItems \n");
 		
-		Double total = 0d;
-		
-		if (shoppingService.getShoppingList().size() > 0) {
-			for (Items item: shop) {
-				System.out.println(item);
-				total += item.subTotal();
-			}
-			
-			System.out.println("\n Shopping cart total: R$" + String.format("%.2f", total));
-			
-		} else {
+		for(int i=0 ; i<shoppingService.getShoppingList().size(); i++) {
+			System.out.println(shoppingService.getShoppingList().get(i));
+			total += shoppingService.getShoppingList().get(i).subTotal();
+			shoppingService.insertTotalPrice(total);
+			isEmpty = false;
+		}
+
+		System.out.println("\n Shopping cart total: R$" + String.format("%.2f", total));
+
+		if(isEmpty) {
 			System.out.println("\n Cart is empty!");
 		}
+
 		System.out.println("\n\n _______________________________________________________________");
 
 		System.out.print("\n\n Enter with 0 to continue: ");

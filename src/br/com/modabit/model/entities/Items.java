@@ -9,7 +9,6 @@ public class Items implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Product product;
-	private Double price;
 	private Integer quantity;
 	
 	
@@ -19,7 +18,6 @@ public class Items implements Serializable{
 	public Items(Product product, Integer quantity) {
 		super();
 		this.product = product;
-		this.price = product.getPrice();
 		this.quantity = quantity;
 	}
 
@@ -31,15 +29,9 @@ public class Items implements Serializable{
 		this.product = product;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
 	public Integer getQuantity() {
 		return quantity;
 	}
-
-
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
@@ -51,7 +43,6 @@ public class Items implements Serializable{
 		
 		return price * quantity;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -72,7 +63,7 @@ public class Items implements Serializable{
 
 	@Override
 	public String toString() {
-		return " Items [productId("+product.getId()+")" + product + ", price= " + price + ", quantity= " + quantity + "]";
+		return " Items [productId("+product.getId()+")" + product + ", price= " + product.getPrice() + ", quantity= " + quantity + "]";
 	}
 	
 }

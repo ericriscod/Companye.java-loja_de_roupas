@@ -1,40 +1,65 @@
 package br.com.modabit.model.entities;
 
+import java.util.Date;
+
 import br.com.modabit.model.enums.Payment;
 
 public class Sale {
 
-	private Payment payment;
-	private ShoppingCart shoppingCart = null;
-	private Double cashValue;
+	private Payment method;
+	private String pixKey;
+	private Double priceTotal;
+	private Date moment;
 
 	public Sale() {
-		shoppingCart = new ShoppingCart();
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+	public Sale(Payment method, String pixKey, Double priceTotal, Date moment) {
+		super();
+		this.method = method;
+		this.pixKey = pixKey;
+		this.priceTotal = priceTotal;
+		this.moment = moment;
 	}
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public Payment getMethod() {
+		return method;
 	}
 
-	public Double getCashValue() {
-		return cashValue;
+	public void setMethod(Payment method) {
+		this.method = method;
 	}
 
-	public void setCashValue(Double cashValue) {
-		this.cashValue = cashValue;
+	public String getPixKey() {
+		return pixKey;
 	}
 
-	public Payment getPayment() {
-		return payment;
+	public void setPixKey(String pixKey) {
+		this.pixKey = pixKey;
 	}
 
-	public void setPayment(Payment payment) {
-		this.payment = payment;
+	public Double getPriceTotal() {
+		return priceTotal;
 	}
 
+	public void setPriceTotal(Double priceTotal) {
+		this.priceTotal = priceTotal;
+	}
+
+	public Date getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Date moment) {
+		this.moment = moment;
+	}
+
+	@Override
+	public String toString() {
+		return "Sale [method= " + method + ", pixKey= " + pixKey + ", priceTotal= " + priceTotal + ", moment= " + moment
+				+ "]";
+	}
 	
+	
+
 }
