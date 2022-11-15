@@ -46,9 +46,11 @@ public class PaymentView {
 			break;
 		}
 		case MONEY: {
+			moneyMethod();
 			break;
 		}
 		case PIX: {
+			pixMethod();
 			break;
 		}
 
@@ -114,6 +116,58 @@ public class PaymentView {
 		
 		if(confirmation.equalsIgnoreCase("y")) {
 			saleService.histortic(Payment.DEBIT, null, totalPrice, dateTime);
+			saleService.takeOutOfStock();
+			System.out.println("\n Approved payment!");
+		}else {
+			System.out.println("\n Cancelled payment!");
+		}
+		
+		System.out.print("\n\n Enter with 0 to continue: ");
+	}
+	
+	public static void moneyMethod() {	
+		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
+		Double totalPrice = shoppingService.getTotalPrice();
+		SaleService saleService = new SaleService();
+		
+		System.out.println("\n\n _______________________________________________________________");
+		System.out.println("\n\n                         Payment - money                      \n");
+		
+		
+		System.out.println("\n Total for payment: R$" + String.format("%.2f", totalPrice));
+		
+		System.out.print("\n Confirm payment (y/n)? ");
+		String confirmation =sc.next();
+		
+		if(confirmation.equalsIgnoreCase("y")) {
+			saleService.histortic(Payment.MONEY, null, totalPrice, dateTime);
+			saleService.takeOutOfStock();
+			System.out.println("\n Approved payment!");
+		}else {
+			System.out.println("\n Cancelled payment!");
+		}
+		
+		System.out.print("\n\n Enter with 0 to continue: ");
+	}
+	
+	public static void pixMethod() {	
+		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
+		Double totalPrice = shoppingService.getTotalPrice();
+		SaleService saleService = new SaleService();
+		
+		System.out.println("\n\n _______________________________________________________________");
+		System.out.println("\n\n                           Payment - pix                      \n");
+		
+		System.out.println(" Enter pix key: ");
+		String keyPix = sc.next();
+		
+		System.out.println("\n Total for payment: R$" + String.format("%.2f", totalPrice));
+		
+		System.out.print("\n Confirm payment (y/n)? ");
+		String confirmation =sc.next();
+		
+		if(confirmation.equalsIgnoreCase("y")) {
+			saleService.histortic(Payment.PIX, keyPix, totalPrice, dateTime);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		}else {
