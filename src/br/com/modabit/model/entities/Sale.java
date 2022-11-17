@@ -2,11 +2,11 @@ package br.com.modabit.model.entities;
 
 import java.util.Date;
 
-import br.com.modabit.model.enums.Payment;
+import br.com.modabit.model.enums.PaymentEnum;
 
 public class Sale {
 
-	private Payment method;
+	private PaymentEnum method;
 	private String pixKey;
 	private Double priceTotal;
 	private Date moment;
@@ -14,7 +14,7 @@ public class Sale {
 	public Sale() {
 	}
 
-	public Sale(Payment method, String pixKey, Double priceTotal, Date moment) {
+	public Sale(PaymentEnum method, String pixKey, Double priceTotal, Date moment) {
 		super();
 		this.method = method;
 		this.pixKey = pixKey;
@@ -22,11 +22,11 @@ public class Sale {
 		this.moment = moment;
 	}
 
-	public Payment getMethod() {
+	public PaymentEnum getMethod() {
 		return method;
 	}
 
-	public void setMethod(Payment method) {
+	public void setMethod(PaymentEnum method) {
 		this.method = method;
 	}
 

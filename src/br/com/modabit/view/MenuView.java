@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.modabit.model.entities.Items;
-import br.com.modabit.model.enums.Category;
-import br.com.modabit.model.enums.Color;
-import br.com.modabit.model.enums.Department;
-import br.com.modabit.model.enums.Size;
-import br.com.modabit.model.enums.TypeName;
+import br.com.modabit.model.enums.CategoryEnum;
+import br.com.modabit.model.enums.ColorEnum;
+import br.com.modabit.model.enums.DepartmentEnum;
+import br.com.modabit.model.enums.SizeEnum;
+import br.com.modabit.model.enums.TypeNameEnum;
 import br.com.modabit.model.service.SaleService;
 import br.com.modabit.model.service.StockService;
 
@@ -47,27 +47,27 @@ public class MenuView {
 		System.out.println("\n Type availability (CLASSIC, NO_CLASSIC).");
 		System.out.print(" Product type: ");
 		String typeString = sc.next();
-		TypeName type = TypeName.valueOf(typeString.toUpperCase());
+		TypeNameEnum type = TypeNameEnum.valueOf(typeString.toUpperCase());
 
 		System.out.println("\n Size availability (P, M, G, GG).");
 		System.out.print(" Product size: ");
 		String sizeString = sc.next();
-		Size size = Size.valueOf(sizeString.toUpperCase());
+		SizeEnum size = SizeEnum.valueOf(sizeString.toUpperCase());
 
 		System.out.println("\n Color availability (WHITE, BLACK, GREY, BLUE, YELLOW, GREEN).");
 		System.out.print(" Product color: ");
 		String colorString = sc.next();
-		Color color = Color.valueOf(colorString.toUpperCase());
+		ColorEnum color = ColorEnum.valueOf(colorString.toUpperCase());
 
 		System.out.println("\n Category availability (SHIRTS, BLOUSE, PANTS, SHORTS).");
 		System.out.print(" Product category: ");
 		String categoryString = sc.next();
-		Category category = Category.valueOf(categoryString.toUpperCase());
+		CategoryEnum category = CategoryEnum.valueOf(categoryString.toUpperCase());
 
 		System.out.println("\n Department availability (SPORT, BATH, SOCIAL, SLEEP, DAY_BY_DAY).");
 		System.out.print(" Product department: ");
 		String departmentString = sc.next();
-		Department department = Department.valueOf(departmentString.toUpperCase());
+		DepartmentEnum department = DepartmentEnum.valueOf(departmentString.toUpperCase());
 
 		System.out.print("\n Product price: ");
 		Double price = sc.nextDouble();

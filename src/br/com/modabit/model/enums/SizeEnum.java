@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Size {
+public enum SizeEnum {
 	P,
 	M,
 	G,

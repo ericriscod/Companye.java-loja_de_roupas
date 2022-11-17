@@ -9,7 +9,7 @@ import br.com.modabit.model.dao.SaleDao;
 import br.com.modabit.model.dao.StockDao;
 import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.Sale;
-import br.com.modabit.model.enums.Payment;
+import br.com.modabit.model.enums.PaymentEnum;
 
 public class SaleService {
 	private static List<Items> listUpdate = new ArrayList<>();
@@ -57,7 +57,7 @@ public class SaleService {
 		return DaoFactory.createSaleDao().findAll();
 	}
 	
-	public void histortic(Payment method, String pixKey, Double priceTotal, Date moment) {
+	public void histortic(PaymentEnum method, String pixKey, Double priceTotal, Date moment) {
 		Sale sale = new Sale();
 		
 		sale.setMethod(method);

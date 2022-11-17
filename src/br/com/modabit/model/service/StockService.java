@@ -6,11 +6,11 @@ import br.com.modabit.model.dao.DaoFactory;
 import br.com.modabit.model.dao.StockDao;
 import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.Product;
-import br.com.modabit.model.enums.Category;
-import br.com.modabit.model.enums.Color;
-import br.com.modabit.model.enums.Department;
-import br.com.modabit.model.enums.Size;
-import br.com.modabit.model.enums.TypeName;
+import br.com.modabit.model.enums.CategoryEnum;
+import br.com.modabit.model.enums.ColorEnum;
+import br.com.modabit.model.enums.DepartmentEnum;
+import br.com.modabit.model.enums.SizeEnum;
+import br.com.modabit.model.enums.TypeNameEnum;
 
 public class StockService {
 
@@ -38,7 +38,7 @@ public class StockService {
 		return 0;
 	}
 
-	public Items createItem(TypeName type, Size size, Color color, Category category, Department department,
+	public Items createItem(TypeNameEnum type, SizeEnum size, ColorEnum color, CategoryEnum category, DepartmentEnum department,
 			Double price, Integer quantity) {
 		Product prod = new Product(type, size, color, category, department, price);
 		Items item = new Items(prod, quantity);

@@ -13,7 +13,7 @@ import br.com.modabit.db.DbConnection;
 import br.com.modabit.db.DbException;
 import br.com.modabit.model.dao.SaleDao;
 import br.com.modabit.model.entities.Sale;
-import br.com.modabit.model.enums.Payment;
+import br.com.modabit.model.enums.PaymentEnum;
 
 public class SalesDaoJDBC implements SaleDao {
 
@@ -67,7 +67,7 @@ public class SalesDaoJDBC implements SaleDao {
 			
 			while(rs.next()) {
 				sale = new Sale();
-				sale.setMethod(Payment.valueOf(rs.getString("Method")));
+				sale.setMethod(PaymentEnum.valueOf(rs.getString("Method")));
 				sale.setPriceTotal(rs.getDouble("Payment_Value"));
 				sale.setPixKey(rs.getString("PixKey"));
 				sale.setMoment(rs.getDate("Moment"));

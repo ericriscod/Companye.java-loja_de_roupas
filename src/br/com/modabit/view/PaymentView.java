@@ -2,7 +2,7 @@ package br.com.modabit.view;
 
 import java.util.Scanner;
 
-import br.com.modabit.model.enums.Payment;
+import br.com.modabit.model.enums.PaymentEnum;
 import br.com.modabit.model.service.SaleService;
 import br.com.modabit.model.service.ShoppingCartService;
 
@@ -23,7 +23,7 @@ public class PaymentView {
 			System.out.println("\n Enter payment method (CREDIT, DEBIT, MONEY, PIX)");
 			System.out.print(" Form of payment: ");
 			String paymentString = sc.next();
-			Payment pay = Payment.valueOf(paymentString.toUpperCase());
+			PaymentEnum pay = PaymentEnum.valueOf(paymentString.toUpperCase());
 			selectPayment(pay);
 		} else {
 			System.out.println("\n\n _______________________________________________________________");
@@ -35,7 +35,7 @@ public class PaymentView {
 		sc.next();
 	}
 
-	public static void selectPayment(Payment pay) {
+	public static void selectPayment(PaymentEnum pay) {
 		switch (pay) {
 		case CREDIT: {
 			creditMethod();
@@ -82,7 +82,7 @@ public class PaymentView {
 		String confirmation =sc.next();
 		
 		if(confirmation.equalsIgnoreCase("y")) {	
-			saleService.histortic(Payment.CREDIT, null, totalPrice, dateTime);
+			saleService.histortic(PaymentEnum.CREDIT, null, totalPrice, dateTime);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		}else {
@@ -115,7 +115,7 @@ public class PaymentView {
 		String confirmation =sc.next();
 		
 		if(confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(Payment.DEBIT, null, totalPrice, dateTime);
+			saleService.histortic(PaymentEnum.DEBIT, null, totalPrice, dateTime);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		}else {
@@ -140,7 +140,7 @@ public class PaymentView {
 		String confirmation =sc.next();
 		
 		if(confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(Payment.MONEY, null, totalPrice, dateTime);
+			saleService.histortic(PaymentEnum.MONEY, null, totalPrice, dateTime);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		}else {
@@ -167,7 +167,7 @@ public class PaymentView {
 		String confirmation =sc.next();
 		
 		if(confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(Payment.PIX, keyPix, totalPrice, dateTime);
+			saleService.histortic(PaymentEnum.PIX, keyPix, totalPrice, dateTime);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		}else {

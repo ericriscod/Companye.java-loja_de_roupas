@@ -2,26 +2,26 @@ package br.com.modabit.model.entities;
 
 import java.util.Objects;
 
-import br.com.modabit.model.enums.Category;
-import br.com.modabit.model.enums.Color;
-import br.com.modabit.model.enums.Department;
-import br.com.modabit.model.enums.Size;
-import br.com.modabit.model.enums.TypeName;
+import br.com.modabit.model.enums.CategoryEnum;
+import br.com.modabit.model.enums.ColorEnum;
+import br.com.modabit.model.enums.DepartmentEnum;
+import br.com.modabit.model.enums.SizeEnum;
+import br.com.modabit.model.enums.TypeNameEnum;
 
 public class Product {
 	private Integer id;
-	private TypeName type;
-	private Size size;
-	private Color color;
-	private Category category;
-	private Department department;
+	private TypeNameEnum type;
+	private SizeEnum size;
+	private ColorEnum color;
+	private CategoryEnum category;
+	private DepartmentEnum department;
 	private Double price;
 
 	public Product() {
 		super();
 	}
 
-	public Product(TypeName type, Size size, Color color, Category category, Department department, Double price) {
+	public Product(TypeNameEnum type, SizeEnum size, ColorEnum color, CategoryEnum category, DepartmentEnum department, Double price) {
 		super();
 		this.type = type;
 		this.size = size;
@@ -41,44 +41,44 @@ public class Product {
 		this.id = id;
 	}
 
-	public TypeName getType() {
+	public TypeNameEnum getType() {
 		return type;
 	}
 
 	public void setType(String type) {
-		this.type =  TypeName.valueOf(type);
+		this.type =  TypeNameEnum.valueOf(type);
 	}
 
-	public Size getSize() {
+	public SizeEnum getSize() {
 		return size;
 	}
 
 	public void setSize(String size) {
-		this.size = Size.valueOf(size);
+		this.size = SizeEnum.valueOf(size);
 	}
 
-	public Color getColor() {
+	public ColorEnum getColor() {
 		return color;
 	}
 
 	public void setColor(String color) {
-		this.color = Color.valueOf(color);
+		this.color = ColorEnum.valueOf(color);
 	}
 
-	public Category getCategory() {
+	public CategoryEnum getCategory() {
 		return category;
 	}
 
 	public void setCategory(String category) {
-		this.category = Category.valueOf(category);
+		this.category = CategoryEnum.valueOf(category);
 	}
 
-	public Department getDepartment() {
+	public DepartmentEnum getDepartment() {
 		return department;
 	}
 
 	public void setDepartment(String department) {
-		this.department = Department.valueOf(department);
+		this.department = DepartmentEnum.valueOf(department);
 	}
 
 	public Double getPrice() {

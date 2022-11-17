@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Department {
+public enum DepartmentEnum {
 	SPORT,
 	BATH,
 	SOCIAL,

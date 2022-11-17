@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Payment {
+public enum PaymentEnum {
 	CREDIT,
 	DEBIT,
 	MONEY,

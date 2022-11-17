@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Color {
+public enum ColorEnum {
 	WHITE,
 	BLACK,
 	GREY,

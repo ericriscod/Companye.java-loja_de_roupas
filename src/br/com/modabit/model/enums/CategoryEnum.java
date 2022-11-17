@@ -1,6 +1,6 @@
 package br.com.modabit.model.enums;
 
-public enum Category {
+public enum CategoryEnum {
 	SHIRTS,
 	BLOUSE,
 	PANTS,
