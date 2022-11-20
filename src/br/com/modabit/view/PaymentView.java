@@ -2,14 +2,14 @@ package br.com.modabit.view;
 
 import java.util.Scanner;
 
+import br.com.modabit.controller.service.SaleServiceController;
+import br.com.modabit.controller.service.ShoppingCartServiceController;
 import br.com.modabit.model.enums.PaymentEnum;
-import br.com.modabit.model.service.SaleService;
-import br.com.modabit.model.service.ShoppingCartService;
 
 public class PaymentView {
 
-	private static SaleService saleService = new SaleService();
-	private static ShoppingCartService shoppingService = new ShoppingCartService();
+	private static SaleServiceController saleService = new SaleServiceController();
+	private static ShoppingCartServiceController shoppingService = new ShoppingCartServiceController();
 	private static Scanner sc = new Scanner(System.in);
 
 	public void paymentMethod() {
@@ -62,7 +62,7 @@ public class PaymentView {
 	public static void creditMethod() {	
 		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
 		Double totalPrice = shoppingService.getTotalPrice();
-		SaleService saleService = new SaleService();
+		SaleServiceController saleService = new SaleServiceController();
 	
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                        Payment - Credit                      \n");
@@ -95,7 +95,7 @@ public class PaymentView {
 	public static void debitMethod() {	
 		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
 		Double totalPrice = shoppingService.getTotalPrice();
-		SaleService saleService = new SaleService();
+		SaleServiceController saleService = new SaleServiceController();
 		
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                        Payment - debit                      \n");
@@ -128,7 +128,7 @@ public class PaymentView {
 	public static void moneyMethod() {	
 		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
 		Double totalPrice = shoppingService.getTotalPrice();
-		SaleService saleService = new SaleService();
+		SaleServiceController saleService = new SaleServiceController();
 		
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                         Payment - money                      \n");
@@ -153,7 +153,7 @@ public class PaymentView {
 	public static void pixMethod() {	
 		java.sql.Date dateTime = new java.sql.Date(new java.util.Date().getTime());
 		Double totalPrice = shoppingService.getTotalPrice();
-		SaleService saleService = new SaleService();
+		SaleServiceController saleService = new SaleServiceController();
 		
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                           Payment - pix                      \n");

@@ -1,4 +1,4 @@
-package br.com.modabit.model.service;
+package br.com.modabit.controller.service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.Sale;
 import br.com.modabit.model.enums.PaymentEnum;
 
-public class SaleService {
+public class SaleServiceController {
 	private static List<Items> listUpdate = new ArrayList<>();
 	private static StockDao dataStock = DaoFactory.createStockDao();
 	private static SaleDao dataSale = DaoFactory.createSaleDao();

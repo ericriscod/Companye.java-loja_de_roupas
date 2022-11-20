@@ -1,4 +1,4 @@
-package br.com.modabit.model.service;
+package br.com.modabit.controller.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import br.com.modabit.model.dao.StockDao;
 import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.ShoppingCart;
 
-public class ShoppingCartService {
+public class ShoppingCartServiceController {
 	private static ShoppingCart cart = new ShoppingCart();
 
 	public Integer addItem(Integer id, Integer amont) {

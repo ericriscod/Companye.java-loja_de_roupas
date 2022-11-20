@@ -2,11 +2,11 @@ package br.com.modabit.view;
 
 import java.util.Scanner;
 
-import br.com.modabit.model.service.ShoppingCartService;
+import br.com.modabit.controller.service.ShoppingCartServiceController;
 
 public class ShoppingCartView {
 
-	private static ShoppingCartService shoppingService = new ShoppingCartService();
+	private static ShoppingCartServiceController shoppingService = new ShoppingCartServiceController();
 	private static Scanner sc = new Scanner(System.in);;
 
 	public static void ShoppingCartMenu() {

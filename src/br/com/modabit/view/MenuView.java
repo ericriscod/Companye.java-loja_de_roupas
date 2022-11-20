@@ -3,20 +3,20 @@ package br.com.modabit.view;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.modabit.controller.service.SaleServiceController;
+import br.com.modabit.controller.service.StockServiceController;
 import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.enums.CategoryEnum;
 import br.com.modabit.model.enums.ColorEnum;
 import br.com.modabit.model.enums.DepartmentEnum;
 import br.com.modabit.model.enums.SizeEnum;
 import br.com.modabit.model.enums.TypeNameEnum;
-import br.com.modabit.model.service.SaleService;
-import br.com.modabit.model.service.StockService;
 
 public class MenuView {
 
 	private static Scanner sc = new Scanner(System.in);
-	private static StockService stockService = new StockService();
-	private static SaleService saleService = new SaleService();
+	private static StockServiceController stockService = new StockServiceController();
+	private static SaleServiceController saleService = new SaleServiceController();
 	private static List<Items> list = null;
 
 	public void startMenu() {

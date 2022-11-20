@@ -1,4 +1,4 @@
-package br.com.modabit.model.service;
+package br.com.modabit.controller.service;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import br.com.modabit.model.enums.DepartmentEnum;
 import br.com.modabit.model.enums.SizeEnum;
 import br.com.modabit.model.enums.TypeNameEnum;
 
-public class StockService {
+public class StockServiceController {
 
 	private StockDao data = DaoFactory.createStockDao();
 
