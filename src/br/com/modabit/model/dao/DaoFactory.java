@@ -1,8 +1,8 @@
 package br.com.modabit.model.dao;
 
-import br.com.modabit.db.DbConnection;
 import br.com.modabit.model.dao.Impl.SalesDaoJDBC;
 import br.com.modabit.model.dao.Impl.StockDaoJDBC;
+import br.com.modabit.model.db.DbConnection;
 
 public class DaoFactory {
 	

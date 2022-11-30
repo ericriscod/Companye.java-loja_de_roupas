@@ -1,4 +1,4 @@
-package br.com.modabit.db;
+package br.com.modabit.model.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;

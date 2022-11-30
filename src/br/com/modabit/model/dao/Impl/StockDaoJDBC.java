@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.modabit.db.DbConnection;
-import br.com.modabit.db.DbException;
 import br.com.modabit.model.dao.StockDao;
+import br.com.modabit.model.db.DbConnection;
+import br.com.modabit.model.db.DbException;
 import br.com.modabit.model.entities.Items;
 import br.com.modabit.model.entities.Product;
 import br.com.modabit.model.entities.Stock;

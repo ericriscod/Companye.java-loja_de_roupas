@@ -38,13 +38,12 @@ public class StockServiceController {
 		return 0;
 	}
 
-	public Items createItem(TypeNameEnum type, SizeEnum size, ColorEnum color, CategoryEnum category, DepartmentEnum department,
-			Double price, Integer quantity) {
+	public Items createItem(TypeNameEnum type, SizeEnum size, ColorEnum color, CategoryEnum category,
+			DepartmentEnum department, Double price, Integer quantity) {
 		Product prod = new Product(type, size, color, category, department, price);
 		Items item = new Items(prod, quantity);
 		return item;
 	}
-	
 
 	public List<Items> getStockList() {
 		data = DaoFactory.createStockDao();

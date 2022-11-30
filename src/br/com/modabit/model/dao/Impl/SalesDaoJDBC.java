@@ -9,9 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.modabit.db.DbConnection;
-import br.com.modabit.db.DbException;
 import br.com.modabit.model.dao.SaleDao;
+import br.com.modabit.model.db.DbConnection;
+import br.com.modabit.model.db.DbException;
 import br.com.modabit.model.entities.Sale;
 import br.com.modabit.model.enums.PaymentEnum;
 

@@ -1,4 +1,4 @@
-package br.com.modabit.db;
+package br.com.modabit.model.db;
 
 public class DbException extends RuntimeException{
 
