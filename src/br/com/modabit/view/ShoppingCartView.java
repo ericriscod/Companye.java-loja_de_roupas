@@ -69,7 +69,7 @@ public class ShoppingCartView {
 
 		switch (add) {
 		case 1:
-			System.out.println(" Successfully inseted!");
+			System.out.println("\n Successfully inseted!");
 			break;
 		case 2: {
 			System.out.println("\n Successfully updated!");

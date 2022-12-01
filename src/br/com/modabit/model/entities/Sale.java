@@ -10,6 +10,7 @@ public class Sale {
 	private String pixKey;
 	private Double priceTotal;
 	private Date moment;
+	private String cpf;
 
 	public Sale() {
 	}
@@ -54,10 +55,18 @@ public class Sale {
 		this.moment = moment;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
 	@Override
 	public String toString() {
 		return "Sale [method= " + method + ", pixKey= " + pixKey + ", priceTotal= " + priceTotal + ", moment= " + moment
-				+ "]";
+				+ ", cpf= " + cpf + "]";
 	}
 	
 	
