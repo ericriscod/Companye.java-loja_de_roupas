@@ -12,7 +12,7 @@ import br.com.modabit.model.entities.Sale;
 import br.com.modabit.model.enums.PaymentEnum;
 
 public class SaleServiceController {
-	private  static List<Items> listUpdate = new ArrayList<>();
+	private List<Items> listUpdate = new ArrayList<>();
 	private static StockDao dataStock = DaoFactory.createStockDao();
 	private static SaleDao dataSale = DaoFactory.createSaleDao();
 
@@ -24,6 +24,7 @@ public class SaleServiceController {
 	}
 
 	public Boolean validateSale(List<Items> listCart) {
+		listUpdate = new ArrayList<>();
 		List<Items> listDataBase = dataStock.findAll();
 
 		for (int i = 0; i < listCart.size(); i++) {

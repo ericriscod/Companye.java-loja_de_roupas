@@ -95,10 +95,15 @@ public class MenuView {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                       Menu - Historic \n");
 		
+		Double totalPrice = 0.d;
+		
 		for(int i=0 ; i<saleService.getListHistoric().size(); i++) {
 			System.out.println(saleService.getListHistoric().get(i));
+			totalPrice += saleService.getListHistoric().get(i).getPriceTotal();
 			isEmpty = false;
 		}
+		
+		System.out.println("\nTotal cash: R$" + String.format("%.2f", totalPrice));
 
 
 		if(isEmpty) {

@@ -28,8 +28,6 @@ public class PaymentView {
 				System.out.print(" Digite the CPF:");
 				cpf = sc.next();
 				
-				System.out.println(cpf);
-				
 				while (!saleService.validateCpf(cpf)) {
 					System.out.println("\n Invalided CPF!");
 					System.out.print(" Digite the CPF again:");
@@ -60,7 +58,7 @@ public class PaymentView {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                        Payment - Credit                      \n");
 		System.out.print(" Card number: ");
-		Integer number = sc.nextInt();
+		String number = sc.next();
 		sc.nextLine();
 
 		System.out.print(" Name in the card: ");
@@ -93,14 +91,14 @@ public class PaymentView {
 		System.out.println("\n\n _______________________________________________________________");
 		System.out.println("\n\n                        Payment - debit                      \n");
 		System.out.print(" Card number: ");
-		Integer number = sc.nextInt();
+		/*Integer number =*/ sc.nextInt();
 		sc.nextLine();
 
 		System.out.print(" Name in the card: ");
-		String name = sc.nextLine();
+		/*String name =*/ sc.nextLine();
 
 		System.out.print(" Expiretion date the card. (xx/xx/xxxx): ");
-		String date = sc.next();
+		/*String date =*/ sc.next();
 
 		System.out.println("\n Total for payment: R$" + String.format("%.2f", totalPrice));
 
