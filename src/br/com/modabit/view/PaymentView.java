@@ -73,7 +73,7 @@ public class PaymentView {
 		String confirmation = sc.next();
 
 		if (confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(PaymentEnum.CREDIT, null, totalPrice, dateTime, cpf);
+			saleService.addHistortic(PaymentEnum.CREDIT, null, totalPrice, dateTime, cpf);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		} else {
@@ -106,7 +106,7 @@ public class PaymentView {
 		String confirmation = sc.next();
 
 		if (confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(PaymentEnum.DEBIT, null, totalPrice, dateTime, cpf);
+			saleService.addHistortic(PaymentEnum.DEBIT, null, totalPrice, dateTime, cpf);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		} else {
@@ -130,7 +130,7 @@ public class PaymentView {
 		String confirmation = sc.next();
 
 		if (confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(PaymentEnum.MONEY, null, totalPrice, dateTime, cpf);
+			saleService.addHistortic(PaymentEnum.MONEY, null, totalPrice, dateTime, cpf);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		} else {
@@ -157,7 +157,7 @@ public class PaymentView {
 		String confirmation = sc.next();
 
 		if (confirmation.equalsIgnoreCase("y")) {
-			saleService.histortic(PaymentEnum.PIX, keyPix, totalPrice, dateTime, cpf);
+			saleService.addHistortic(PaymentEnum.PIX, keyPix, totalPrice, dateTime, cpf);
 			saleService.takeOutOfStock();
 			System.out.println("\n Approved payment!");
 		} else {

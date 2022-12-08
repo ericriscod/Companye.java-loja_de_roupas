@@ -66,7 +66,7 @@ public class SaleServiceController {
 		return DaoFactory.createSaleDao().findAll();
 	}
 
-	public void histortic(PaymentEnum method, String pixKey, Double priceTotal, Date moment, String cpf) {
+	public void addHistortic(PaymentEnum method, String pixKey, Double priceTotal, Date moment, String cpf) {
 		Sale sale = new Sale();
 
 		sale.setMethod(method);
