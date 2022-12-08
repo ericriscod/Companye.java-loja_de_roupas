@@ -12,7 +12,7 @@ import br.com.modabit.model.entities.Sale;
 import br.com.modabit.model.enums.PaymentEnum;
 
 public class SaleServiceController {
-	private List<Items> listUpdate = new ArrayList<>();
+	private static List<Items> listUpdate = new ArrayList<>();
 	private static StockDao dataStock = DaoFactory.createStockDao();
 	private static SaleDao dataSale = DaoFactory.createSaleDao();
 
